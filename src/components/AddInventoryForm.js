@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
-function AddInventoryForm({ refreshInventory }) {
+function AddInventoryForm({ refreshInventory,existingItemIds }) {
   const [item_id, setItemId] = useState('');
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
   const [touched, setTouched] = useState({});
+const [itemIdError, setItemIdError] = useState('');
+
+ useEffect(() => {
+    if (item_id && !existingItemIds.includes(item_id)) {
+      setItemIdError('');
+    }
+  }, [item_id, existingItemIds])
+
 
   const validate = () => {
     let errors = {};
     if (!item_id) errors.item_id = "Item ID is required";
+    else if (existingItemIds.includes(item_id)) {
+      errors.item_id = "Item ID is already in use";
+      setItemIdError("Item ID is already in use");
+    }
     if (!name) errors.name = "Name is required";
     if (!category) errors.category = "Category is required";
     if (!quantity || quantity <= 0) errors.quantity = "Quantity should not be empty";
@@ -22,6 +34,9 @@ function AddInventoryForm({ refreshInventory }) {
   const handleBlur = (field) => {
     const value = { item_id, name, category, quantity, price }[field];
     setTouched(prev => ({ ...prev, [field]: value ? false : true }));
+    if (field === 'item_id' && !existingItemIds.includes(item_id)) {
+      setItemIdError('');
+    }
   };
 
 
@@ -35,13 +50,15 @@ function AddInventoryForm({ refreshInventory }) {
       }, {}));
       return;
     }
-
+const now = new Date().toLocaleString();
     await axios.post('http://localhost:4000/products', {
       item_id,
       name,
       category,
       quantity: Number(quantity),
       price: Number(price),
+      created_at:now,
+      updated_at:now
     });
     refreshInventory();
     setItemId('');
@@ -68,6 +85,7 @@ function AddInventoryForm({ refreshInventory }) {
           className={`w-full p-2 border border-gray-300 rounded ${touched.item_id && !item_id ? 'border-red-500' : ''}`}
         />
         {touched.item_id && !item_id && <p className="text-red-500 text-xs mt-1">Item ID is required</p>}
+        {itemIdError && <p className="text-red-500 text-xs mt-1">{itemIdError}</p>}
       </div>
       <div className="mb-4">
         <label className="block text-gray-700">Name</label>
@@ -105,7 +123,7 @@ function AddInventoryForm({ refreshInventory }) {
         {touched.category && !category && <p className="text-red-500 text-xs mt-1">Category is required</p>}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Quantity</label>
+        <label className="block text-gray-700">Quantity (in pieces) </label>
         <input
           type="number"
           value={quantity}
@@ -119,7 +137,7 @@ function AddInventoryForm({ refreshInventory }) {
         {touched.quantity && (!quantity || quantity <= 0) && <p className="text-red-500 text-xs mt-1">Quantity should not be empty</p>}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Price</label>
+        <label className="block text-gray-700">Price (in Rs)</label>
         <input
           type="number"
           value={price}
