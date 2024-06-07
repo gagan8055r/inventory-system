@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "item_id": "SPORT074",
+      "name": "Professional Basketball",
+      "category": "Sports",
+      "quantity": 50,
+      "price": 30,
+      "id": "cecf"
+    },
+    {
+      "id": "1f90",
+      "item_id": "ITEM004",
+      "name": "TV",
+      "category": "Electronics",
+      "quantity": 12,
+      "price": 1574
+    },
+    {
+      "item_id": "ITEM001",
+      "name": "MIXER",
+      "category": "Electronics",
+      "quantity": 15,
+      "price": 748,
+      "id": "fbb1"
+    },
+    {
+      "item_id": "ITEM003",
+      "name": "GR",
+      "category": "Electronics",
+      "quantity": 124,
+      "price": 44,
+      "id": "1f36"
+    },
+    {
+      "item_id": "ITEM007",
+      "name": "CHOCOLATES",
+      "category": "Groceries",
+      "quantity": 1200,
+      "price": 147,
+      "id": "d5b0"
+    }
+  ]
+}
