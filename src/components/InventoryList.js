@@ -37,6 +37,8 @@ function InventoryList() {
                 <th className="py-2 px-4 border-b">Category</th>
                 <th className="py-2 px-4 border-b">Quantity</th>
                 <th className="py-2 px-4 border-b">Price</th>
+                <th className="py-2 px-4 border-b">Created_Time</th>
+                <th className="py-2 px-4 border-b">Updated_Time</th>
                 <th className="py-2 px-4 border-b">Actions</th>
               </tr>
             </thead>
@@ -48,6 +50,8 @@ function InventoryList() {
                   <td className="py-2 px-4 border-b">{item.category}</td>
                   <td className="py-2 px-4 border-b">{item.quantity}</td>
                   <td className="py-2 px-4 border-b">{item.price}</td>
+                  <td className="py-2 px-4 border-b">{item.created_at}</td>
+                  <td className="py-2 px-4 border-b">{item.updated_at}</td>
                   <td className="py-2 px-4 border-b">
                     <button onClick={() => setEditingItem(item)} className="text-blue-500 mr-2">Edit</button>
                     <button onClick={() => deleteItem(item.id)} className="text-red-500">Delete</button>
