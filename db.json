@@ -1,44 +1,74 @@
 {
   "products": [
     {
-      "item_id": "SPORT074",
-      "name": "Professional Basketball",
-      "category": "Sports",
-      "quantity": 50,
-      "price": 30,
-      "id": "cecf"
-    },
-    {
-      "id": "1f90",
-      "item_id": "ITEM004",
-      "name": "TV",
-      "category": "Electronics",
-      "quantity": 12,
-      "price": 1574
-    },
-    {
       "item_id": "ITEM001",
-      "name": "MIXER",
-      "category": "Electronics",
-      "quantity": 15,
-      "price": 748,
-      "id": "fbb1"
+      "name": "BAT",
+      "category": "Sports",
+      "quantity": 10,
+      "price": 2471,
+      "created_at": "6/7/2024, 6:35:21 PM",
+      "updated_at": "6/7/2024, 6:39:13 PM",
+      "id": "1303"
     },
     {
+      "item_id": "ITEM002",
+      "name": "VEGETABLES",
+      "category": "Groceries",
+      "quantity": 12,
+      "price": 1472,
+      "created_at": "6/7/2024, 6:36:14 PM",
+      "updated_at": "6/7/2024, 6:39:34 PM",
+      "id": "dc8f"
+    },
+    {
+      "id": "703c",
       "item_id": "ITEM003",
-      "name": "GR",
+      "name": "LED TV",
       "category": "Electronics",
-      "quantity": 124,
-      "price": 44,
-      "id": "1f36"
+      "quantity": 3,
+      "price": 12475,
+      "created_at": "6/7/2024, 6:38:32 PM",
+      "updated_at": "6/7/2024, 6:38:32 PM"
+    },
+    {
+      "item_id": "ITEM004",
+      "name": "FRUITS",
+      "category": "Groceries",
+      "quantity": 10,
+      "price": 471,
+      "created_at": "6/7/2024, 6:40:27 PM",
+      "updated_at": "6/7/2024, 7:03:39 PM",
+      "id": "509f"
+    },
+    {
+      "id": "af19",
+      "item_id": "ITEM005",
+      "name": "TABLE",
+      "category": "Furniture",
+      "quantity": 10,
+      "price": 1247,
+      "created_at": "6/7/2024, 6:41:01 PM",
+      "updated_at": "6/7/2024, 6:41:01 PM"
+    },
+    {
+      "item_id": "ITEM006",
+      "name": "MILK",
+      "category": "Groceries",
+      "quantity": 125,
+      "price": 471,
+      "created_at": "6/7/2024, 6:52:58 PM",
+      "updated_at": "6/7/2024, 7:01:44 PM",
+      "id": "9ef2"
     },
     {
       "item_id": "ITEM007",
-      "name": "CHOCOLATES",
+      "name": "CHEESE",
       "category": "Groceries",
-      "quantity": 1200,
-      "price": 147,
-      "id": "d5b0"
+      "quantity": 10,
+      "price": 400,
+      "created_at": "6/7/2024, 7:02:34 PM",
+      "updated_at": "6/7/2024, 7:02:59 PM",
+      "id": "5d6c"
     }
   ]
 }
