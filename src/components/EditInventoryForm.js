@@ -27,13 +27,15 @@ function EditInventoryForm({ item, refreshInventory, setEditingItem }) {
       setErrors(validationErrors);
       return;
     }
-
+const now =new Date().toLocaleString()
     await axios.put(`http://localhost:4000/products/${item.id}`, {
       item_id,
       name,
       category,
       quantity: Number(quantity),
       price: Number(price),
+      created_at: item.created_at,
+      updated_at:now
     });
     refreshInventory();
     setEditingItem(null);
