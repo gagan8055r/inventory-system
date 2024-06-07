@@ -1,15 +1,29 @@
 import './App.css';
 import AddInventoryForm from './components/AddInventoryForm';
 import InventoryList from './components/InventoryList';
-import { useState } from 'react';
-
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 function App() {
   const [refresh, setRefresh] = useState(false);
-
+const [existingItemIds, setExistingItemIds] = useState([]);
   const refreshInventory = () => {
     setRefresh(!refresh);
   };
 
+
+  const fetchExistingItemIds = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/products');
+      const itemIds = response.data.map(item => item.item_id);
+      setExistingItemIds(itemIds);
+    } catch (error) {
+      console.error("Error fetching item IDs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchExistingItemIds();
+  }, [refresh]);
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <header className="bg-blue-600 text-white py-4 shadow-md">
@@ -19,7 +33,11 @@ function App() {
       </header>
       <main className="flex-grow container mx-auto px-4 py-8">
         <section className="mb-12">
-          <AddInventoryForm refreshInventory={refreshInventory} />
+          <AddInventoryForm 
+    refreshInventory={refreshInventory} 
+    existingItemIds={existingItemIds} 
+  />
+
         </section>
 
         <section>
